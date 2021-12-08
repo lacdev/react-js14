@@ -22,9 +22,9 @@ function App() {
           Learn React
         </a>
         <Greeting firstName="Oscar" lastName="Castillo" />
-        <Greeting firstName="Odon" lastName="ML" />
+        {/* <Greeting firstName="Odon" lastName="ML" />
         <Greeting firstName="Selene" lastName="Chavez" />
-        <Calculator a={100} b={10} operator={'/'} />
+        <Calculator a={100} b={10} operator={'/'} /> */}
       </header>
     </div>
   )
