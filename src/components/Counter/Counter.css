@@ -20,3 +20,11 @@
   cursor: pointer;
   margin: 8px;
 }
+
+.text-even {
+  color: aquamarine;
+}
+
+.text-odd {
+  color: pink;
+}

@@ -22,10 +22,11 @@ const Counter = () => {
     }
   }, [counter])
 
+  let colorCounter = counter % 2 === 0 ? 'text-even' : 'text-odd'
+
   return (
     <div>
-      <p>Counter: {counter}</p>
-      <p>Counter 2: {otherCounter} </p>
+      <p className={colorCounter}>Counter: {counter}</p>
       <button className="btn" onClick={() => setCounter(counter + 1)}>
         Add
       </button>
