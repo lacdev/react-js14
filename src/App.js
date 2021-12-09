@@ -5,6 +5,7 @@ import './App.css'
 import { Greeting } from './components/Greeting'
 import { Calculator } from './components/Calculator'
 import { Counter } from './components/Counter'
+import { Navbar } from './components/Navbar'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Greeting firstName="Oscar" lastName="Castillo" />
         <Counter />
       </header>
+      <Navbar />
     </div>
   )
 }
