@@ -4,6 +4,7 @@ import './App.css'
 //components
 import { Greeting } from './components/Greeting'
 import { Calculator } from './components/Calculator'
+import { Counter } from './components/Counter'
 
 function App() {
   return (
@@ -22,9 +23,9 @@ function App() {
           Learn React
         </a>
         <Greeting firstName="Oscar" lastName="Castillo" />
-        {/* <Greeting firstName="Odon" lastName="ML" />
-        <Greeting firstName="Selene" lastName="Chavez" />
-        <Calculator a={100} b={10} operator={'/'} /> */}
+        <Counter />
+        <Counter />
+        <Counter />
       </header>
     </div>
   )
