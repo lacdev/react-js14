@@ -5,9 +5,15 @@ import './Navbar.css'
 const Navbar = () => {
   const [active, setActive] = useState('')
 
-  const items = ['Acerca', 'Alumnos', 'Empresas', 'Cursos', 'Login']
+  const items = [
+    { name: 'Acerca' },
+    { name: 'Alumnos' },
+    { name: 'Empresas' },
+    { name: 'Cursos' },
+    { name: 'Login' },
+  ]
 
-  const list = items.map((name) => {
+  const list = items.map(({ name }) => {
     return (
       <li
         key={name}
