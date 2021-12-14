@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-container {
+  background-color: rgb(255, 219, 225);
+  color: black;
+  padding: 32px;
+}
+
+.nav-list {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  text-decoration: none;
+  cursor: pointer;
+  list-style-type: none;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.nav-list > * {
+  padding: 8px 16px;
+}
+
+.active {
+  border-bottom: 4px solid black;
+}

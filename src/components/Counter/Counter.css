@@ -1,0 +1,30 @@
+.btn {
+  text-align: center;
+  color: rgb(51, 51, 51);
+  background-color: #61dafb;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin: 8px;
+}
+
+.btn2 {
+  text-align: center;
+  font-weight: 700;
+  color: white;
+  background-color: red;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  margin: 8px;
+}
+
+.text-even {
+  color: aquamarine;
+}
+
+.text-odd {
+  color: pink;
+}
