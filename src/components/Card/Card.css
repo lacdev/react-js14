@@ -1,0 +1,23 @@
+.card {
+  display: flex;
+  gap: 8px;
+  border: 2px solid rgb(22, 126, 187);
+  color: rgb(22, 126, 187);
+  font-weight: bold;
+  max-width: 350px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  padding: 16px;
+}
+
+.img-container {
+  height: 150px;
+  width: 150px;
+}
+
+.info-container {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-around;
+  align-items: center;
+}

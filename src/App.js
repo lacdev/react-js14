@@ -6,6 +6,7 @@ import { Greeting } from './components/Greeting'
 import { Calculator } from './components/Calculator'
 import { Counter } from './components/Counter'
 import { Navbar } from './components/Navbar'
+import { Card } from './components/Card'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Counter />
       </header>
       <Navbar />
+      <Card />
     </div>
   )
 }
