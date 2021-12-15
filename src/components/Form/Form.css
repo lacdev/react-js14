@@ -1,0 +1,11 @@
+.form-container {
+  display: flex;
+  flex-flow: column wrap;
+  max-width: 350px;
+}
+
+input {
+  border-radius: 8px;
+  margin: 8px;
+  padding: 8px 16px;
+}
