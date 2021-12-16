@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react/cjs/react.development'
 import { Input } from '../../components/input'
+import { createUser } from '../../services/users'
 
 import './UsersNew.css'
 
@@ -11,13 +12,35 @@ export default function UsersNew() {
   const [ocupation, setOcupation] = useState('')
   const [birthdate, setBirthdate] = useState('')
 
-  // const handleFirstName = (event) => setFirstName(event.target.value)
-  // const handleLastName = (event) => setLastName(event.target.value)
+  const cleanForm = () => {
+    setFirstName('')
+    setLastName('')
+    setGender('')
+    setOcupation('')
+    setBirthdate('')
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      const data = {
+        firstName,
+        lastName,
+        gender,
+        ocupation,
+        birthdate,
+      }
+      await createUser(data)
+      cleanForm()
+    } catch (error) {
+      console.error(error.message)
+    }
+  }
 
   return (
     <div className="container">
       <h1>Crea un usuario</h1>
-      <form>
+      <form onSubmit={handleSubmit}>
         <Input
           min={1}
           max={5}
@@ -57,6 +80,7 @@ export default function UsersNew() {
           value={birthdate}
           setValue={setBirthdate}
         />
+        <button type="submit">Crear</button>
       </form>
     </div>
   )
