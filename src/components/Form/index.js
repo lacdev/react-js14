@@ -32,9 +32,7 @@ const Form = () => {
     <div>
       <form>
         <div className="form-container">
-          <label htmlFor={creditCardNumber}>
-            Credit Card Number:{creditCardNumber}
-          </label>
+          <label htmlFor={creditCardNumber}>Credit Card Number:</label>
           <input
             id="creditCardNumber"
             type="number"
@@ -42,12 +40,10 @@ const Form = () => {
             value={creditCardNumber}
           />
 
-          <label htmlFor={name}>Name:{name}</label>
+          <label htmlFor={name}>Name:</label>
           <input id="name" type="text" onChange={handleName} value={name} />
 
-          <label htmlFor={expirationDate}>
-            Expiration Date:{expirationDate}
-          </label>
+          <label htmlFor={expirationDate}>Expiration Date:</label>
           <input
             id="expiration"
             type="text"
@@ -55,13 +51,27 @@ const Form = () => {
             value={expirationDate}
           />
 
-          <label htmlFor={cvv}>CVV:{cvv}</label>
+          <label htmlFor={cvv}>CVV:</label>
           <input id="cvv" type="number" onChange={handleCvv} value={cvv} />
           <button type="submit" className="btn" onSubmit={handleSubmit}>
             Enviar Datos
           </button>
         </div>
       </form>
+      <div className="card-container">
+        <div className="card-first-container">
+          <p>Name: </p>
+          <p>{name}</p>
+          <p>Credit Card Number: </p>
+          <p>{creditCardNumber}</p>
+        </div>
+        <div className="card-second-container">
+          <p>Expiration Date: </p>
+          <p>{expirationDate}</p>
+          <p>CVV </p>
+          <p>{cvv}</p>
+        </div>
+      </div>
     </div>
   )
 }
