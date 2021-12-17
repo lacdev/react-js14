@@ -11,7 +11,9 @@ const Card = () => {
     const list = async () => {
       try {
         const response = await getUsers()
+        console.log(response)
         const data = convertToArray(response)
+        console.log(data)
         setKoders(data)
       } catch (error) {
         console.log(error)
@@ -43,7 +45,9 @@ const Card = () => {
 export default function Users() {
   return (
     <div>
-      <div>Aqui va a ser mi lista de usuarios</div>
+      <div>
+        <h1>Lista de Koders:</h1>
+      </div>
       <Card />
     </div>
   )

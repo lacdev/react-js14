@@ -39,7 +39,7 @@ export default function UsersNew() {
 
   return (
     <div className="container">
-      <h1>Crea un usuario</h1>
+      <h1>Crea un Koder</h1>
       <form onSubmit={handleSubmit}>
         <Input
           min={1}
