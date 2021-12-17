@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react/cjs/react.development'
 import { Input } from '../../components/input'
 import { createUser } from '../../services/users'
+import Button from '@mui/material/Button'
 
 import './UsersNew.css'
 
@@ -81,6 +82,7 @@ export default function UsersNew() {
           setValue={setBirthdate}
         />
         <button type="submit">Crear</button>
+        <Button variant="contained">Crear Koder</Button>
       </form>
     </div>
   )
