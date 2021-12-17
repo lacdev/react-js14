@@ -36,14 +36,3 @@ const convertToArray = (firebaseObject) =>
   }))
 
 export { createUser, getUsers, convertToArray, updateUser }
-
-// const objArray = []
-
-// Object.keys(firebaseObject).forEach((key) =>
-//   objArray.push({
-//     id: key,
-//     data: firebaseObject[key],
-//   })
-// )
-
-// return objArray
