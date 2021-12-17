@@ -12,4 +12,22 @@ const createUser = async (data) => {
   return await response.json
 }
 
-export { createUser }
+const getUsers = async () => {
+  const response = await fetch(`${BASE_URL}${USERS_PATH}`)
+  return response.json()
+}
+
+const convertToArray = (firebaseObject) => {
+  const objArray = []
+
+  Object.keys(firebaseObject).forEach((key) =>
+    objArray.push({
+      id: key,
+      data: firebaseObject[key],
+    })
+  )
+
+  return objArray
+}
+
+export { createUser, getUsers, convertToArray }
