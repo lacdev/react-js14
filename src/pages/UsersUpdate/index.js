@@ -1,87 +1,84 @@
-import React from 'react'
-import { useState } from 'react/cjs/react.development'
-import { Input } from '../../components/input'
-import { updateUser } from '../../services/users'
+import React, { useState, useEffect } from "react";
 
-export default function UpdateUsers() {
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
-  const [gender, setGender] = useState('')
-  const [ocupation, setOcupation] = useState('')
-  const [birthdate, setBirthdate] = useState('')
+// Input
+import Input from "../../components/Input";
 
-  const cleanForm = () => {
-    setFirstName('')
-    setLastName('')
-    setGender('')
-    setOcupation('')
-    setBirthdate('')
-  }
+// Services
+import { getUser, updateUser } from "../../services/users";
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    try {
-      const data = {
-        firstName,
-        lastName,
-        gender,
-        ocupation,
-        birthdate,
-      }
-      await updateUser(data)
-      cleanForm()
-    } catch (error) {
-      console.error(error.message)
-    }
-  }
+// RR
+import { useParams } from "react-router-dom";
 
-  return (
-    <div>
-      <div className="container">
-        <h1>Actualiza un Koder</h1>
-        <form onSubmit={handleSubmit}>
-          <Input
-            min={1}
-            max={5}
-            type="text"
-            id="firstName"
-            label="First Name"
-            value={firstName}
-            setValue={setFirstName}
-          />
-          <Input
-            min={1}
-            max={20}
-            type="text"
-            id="lastName"
-            label="Last Name"
-            value={lastName}
-            setValue={setLastName}
-          />
-          <Input
-            type="text"
-            id="gender"
-            label="Gender"
-            value={gender}
-            setValue={setGender}
-          />
-          <Input
-            type="text"
-            id="ocupation"
-            label="Ocupation"
-            value={ocupation}
-            setValue={setOcupation}
-          />
-          <Input
-            type="date"
-            id="birthdate"
-            label="birthdate"
-            value={birthdate}
-            setValue={setBirthdate}
-          />
-          <button type="submit">Actualizar Usuario</button>
-        </form>
-      </div>
-    </div>
-  )
+function UsersUpdate() {
+	const [firstName, setFirstName] = useState("");
+	const [lastName, setLastName] = useState("");
+	const [gender, setGender] = useState("");
+	const [occupation, setOccupation] = useState("");
+	const [birthdate, setBirthdate] = useState("");
+
+	const params = useParams();
+
+	useEffect(() => {
+		const get = async () => {
+			const { firstName, lastName, gender, occupation, birthdate } =
+				await getUser(params.userID);
+			// console.log(response);
+			setFirstName(firstName);
+			setLastName(lastName);
+			setGender(gender);
+			setOccupation(occupation);
+			setBirthdate(birthdate);
+		};
+		get();
+	}, [params.userID]);
+
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+		const data = {
+			firstName,
+			lastName,
+			gender,
+			occupation,
+			birthdate,
+		};
+		await updateUser(params.userID, data);
+		console.log("holi");
+	};
+
+	return (
+		<div className="">
+			<h1>Actualizar usuario </h1>
+			<form onSubmit={handleSubmit}>
+				<Input
+					id="firstName"
+					label="First Name"
+					value={firstName}
+					setValue={setFirstName}
+				/>
+				<Input
+					id="lastName"
+					label="Last Name"
+					value={lastName}
+					setValue={setLastName}
+				/>
+				<Input id="gender" label="Gender" value={gender} setValue={setGender} />
+				<Input
+					id="occupation"
+					label="Occupation"
+					value={occupation}
+					setValue={setOccupation}
+				/>
+				<Input
+					id="birthdate"
+					type="date"
+					label="Birthdate"
+					value={birthdate}
+					setValue={setBirthdate}
+				/>
+				<button type="submit">Actualizar</button>
+			</form>
+		</div>
+	);
 }
+
+export default UsersUpdate;

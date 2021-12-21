@@ -1,58 +1,24 @@
-import React, { useEffect } from 'react'
-import { useState } from 'react/cjs/react.development'
-import './Users.css'
+import React from "react";
 
-//Services
-import { getUsers, convertToArray } from '../../services/users'
-
-const Card = () => {
-  const [koders, setKoders] = useState([])
-
-  useEffect(() => {
-    const list = async () => {
-      try {
-        const response = await getUsers()
-        console.log(response)
-        const data = convertToArray(response)
-        console.log(data)
-        setKoders(data)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-
-    list()
-  }, [])
-
-  const koderList = koders.map(
-    ({ id, data: { birthdate, firstName, gender, lastName, occupation } }) => {
-      return (
-        <div key={id} className="card">
-          <div className="info-container">
-            <p>Name: {firstName}</p>
-            <p>Last Name: {lastName}</p>
-            <p>Birthdate: {birthdate}</p>
-            <p>Gender: {gender}</p>
-            <p>Occupation: {occupation}</p>
-          </div>
-        </div>
-      )
-    }
-  )
-
-  return <div>{koderList}</div>
-}
+import { Link, Outlet } from "react-router-dom";
 
 export default function Users() {
-  return (
-    <div>
-      
-      <div>
-        <h1>Lista de Koders:</h1>
-      </div>
-      <Card />
-    </div>
-  )
+	return (
+		<>
+			<div className="content">
+				<h1>Users screen</h1>
+				<Outlet />
+			</div>
+			<div className="aside">
+				<nav className="side-nav">
+					<Link className="link" to="">
+						List users
+					</Link>
+					<Link className="link" to="new">
+						Create user
+					</Link>
+				</nav>
+			</div>
+		</>
+	);
 }
-
-export { Card }
