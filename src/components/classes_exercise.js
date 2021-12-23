@@ -104,11 +104,18 @@ class Damage extends Hero {
   }
 
   attackEnemy(enemy) {
-    if (enemy.hp <= 100 && enemy.hp > 0) {
+    if ((enemy.hp = 10)) {
+      enemy.hp -= 10
+      return `${this.name} has killed ${enemy.name}`
+    }
+
+    if (enemy.hp <= 100) {
       enemy.hp -= 10
       return `${this.name} has attacked ${enemy.name}`
     }
-    return `Can't attack ${enemy.name}`
+    if ((enemy.hp = 0)) {
+      return `${enemy.name} has been killed already.`
+    }
   }
 }
 
