@@ -1,10 +1,11 @@
 const { ThirteenMpSharp } = require('@mui/icons-material')
 
 class Hero {
-  constructor(name, level, ultimate) {
+  constructor(name, level, ultimate, hp = 100) {
     this.name = name
     this.level = level
     this.ultimate = ultimate
+    this.hp = hp
   }
 
   sayHi() {
@@ -42,10 +43,27 @@ class Support extends Hero {
   secondaryHeal() {
     return `${this.name} has used ${this.spell2}`
   }
+
+  healAlly(ally) {
+    if (ally.hp < 100 && ally.hp > 0) {
+      ally.hp += 10
+      return `${this.name} has healed ${ally.name}.`
+    }
+
+    return `This ally can't be healed `
+  }
 }
 
 class Frontline extends Hero {
-  constructor(name, level, spell, spell2, ultimate) {
+  constructor(
+    name,
+    level,
+    spell,
+    spell2,
+    ultimate,
+    shield = 50,
+    type = 'Frontline'
+  ) {
     // Chain constructor with super
     super(name, level)
 
@@ -53,6 +71,8 @@ class Frontline extends Hero {
     this.spell = spell
     this.spell2 = spell2
     this.ultimate = ultimate
+    this.shield = shield
+    this.type = type
   }
 
   primaryDefense() {
@@ -65,7 +85,7 @@ class Frontline extends Hero {
 }
 
 class Damage extends Hero {
-  constructor(name, level, spell, spell2, ultimate) {
+  constructor(name, level, spell, spell2, ultimate, attack) {
     // Chain constructor with super
     super(name, level)
 
@@ -81,6 +101,14 @@ class Damage extends Hero {
 
   secondaryAttack() {
     return `${this.name} has used ${this.spell2}`
+  }
+
+  attackEnemy(enemy) {
+    if (enemy.hp <= 100 && enemy.hp > 0) {
+      enemy.hp -= 10
+      return `${this.name} has attacked ${enemy.name}`
+    }
+    return `Can't attack ${enemy.name}`
   }
 }
 
