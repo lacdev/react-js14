@@ -36,21 +36,26 @@ class Support extends Hero {
     this.ultimate = ultimate
   }
 
-  primaryHeal() {
-    return `${this.name} has used ${this.spell}`
-  }
-
-  secondaryHeal() {
-    return `${this.name} has used ${this.spell2}`
-  }
-
-  healAlly(ally) {
+  primaryHeal(ally) {
     if (ally.hp < 100 && ally.hp > 0) {
       ally.hp += 10
-      return `${this.name} has healed ${ally.name}.`
+      return `${this.name} has healed ${ally.name} with ${this.spell}.`
     }
 
-    return `This ally can't be healed `
+    if ((ally.hp = 0)) {
+      return `${this.name} is out of combat and can't be healed.`
+    }
+  }
+
+  secondaryHeal(ally) {
+    if (ally.hp < 100 && ally.hp > 0) {
+      ally.hp += 10
+      return `${this.name} has healed ${ally.name} with ${this.spell}.`
+    }
+
+    if ((ally.hp = 0)) {
+      return `${this.name} is out of combat and can't be healed.`
+    }
   }
 }
 
@@ -85,7 +90,7 @@ class Frontline extends Hero {
 }
 
 class Damage extends Hero {
-  constructor(name, level, spell, spell2, ultimate, attack) {
+  constructor(name, level, spell, spell2, ultimate) {
     // Chain constructor with super
     super(name, level)
 
@@ -95,26 +100,33 @@ class Damage extends Hero {
     this.ultimate = ultimate
   }
 
-  primaryAttack() {
-    return `${this.name} has used ${this.spell}`
-  }
-
-  secondaryAttack() {
-    return `${this.name} has used ${this.spell2}`
-  }
-
-  attackEnemy(enemy) {
+  primaryAttack(enemy) {
     if ((enemy.hp = 10)) {
       enemy.hp -= 10
-      return `${this.name} has killed ${enemy.name}`
+      return `${this.name} has killed ${enemy.name} with ${this.spell}`
     }
 
     if (enemy.hp <= 100) {
       enemy.hp -= 10
-      return `${this.name} has attacked ${enemy.name}`
+      return `${this.name} has attacked ${enemy.name} with ${this.spell}`
     }
     if ((enemy.hp = 0)) {
-      return `${enemy.name} has been killed already.`
+      return `${enemy.name} is out of combat already.`
+    }
+  }
+
+  secondaryAttack(enemy) {
+    if ((enemy.hp = 10)) {
+      enemy.hp -= 10
+      return `${this.name} has killed ${enemy.name} with ${this.spell2}`
+    }
+
+    if (enemy.hp <= 100) {
+      enemy.hp -= 10
+      return `${this.name} has attacked ${enemy.name} with ${this.spell2}`
+    }
+    if ((enemy.hp = 0)) {
+      return `${enemy.name} is out of combat already.`
     }
   }
 }
