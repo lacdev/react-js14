@@ -42,7 +42,7 @@ class Support extends Hero {
       return `${this.name} has healed ${ally.name} with ${this.spell}.`
     }
 
-    if ((ally.hp = 0)) {
+    if (ally.hp === 0) {
       return `${this.name} is out of combat and can't be healed.`
     }
   }
@@ -53,7 +53,7 @@ class Support extends Hero {
       return `${this.name} has healed ${ally.name} with ${this.spell}.`
     }
 
-    if ((ally.hp = 0)) {
+    if (ally.hp === 0) {
       return `${this.name} is out of combat and can't be healed.`
     }
   }
@@ -101,7 +101,7 @@ class Damage extends Hero {
   }
 
   primaryAttack(enemy) {
-    if ((enemy.hp = 10)) {
+    if (enemy.hp === 10) {
       enemy.hp -= 10
       return `${this.name} has killed ${enemy.name} with ${this.spell}`
     }
@@ -110,13 +110,13 @@ class Damage extends Hero {
       enemy.hp -= 10
       return `${this.name} has attacked ${enemy.name} with ${this.spell}`
     }
-    if ((enemy.hp = 0)) {
+    if (enemy.hp === 0) {
       return `${enemy.name} is out of combat already.`
     }
   }
 
   secondaryAttack(enemy) {
-    if ((enemy.hp = 10)) {
+    if (enemy.hp === 10) {
       enemy.hp -= 10
       return `${this.name} has killed ${enemy.name} with ${this.spell2}`
     }
@@ -125,13 +125,19 @@ class Damage extends Hero {
       enemy.hp -= 10
       return `${this.name} has attacked ${enemy.name} with ${this.spell2}`
     }
-    if ((enemy.hp = 0)) {
+    if (enemy.hp === 0) {
       return `${enemy.name} is out of combat already.`
     }
   }
 }
 
-const Seris = new Support('Seris', 10, 'rejuvente', 'autoheal', 'Resurrection')
+const Seris = new Support(
+  'Seris',
+  10,
+  'Rejuvenate',
+  'Life Link',
+  'Resurrection'
+)
 
 const Raum = new Frontline('Raum', 50, 'earthquake', 'shield', 'Overpower')
 
