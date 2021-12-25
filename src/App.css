@@ -1,38 +1,111 @@
-.App {
-  text-align: center;
+.fixed-container {
+	width: 100vw;
+	height: 100px;
+	position: fixed;
+	z-index: 10;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.btn {
+	width: 120px;
+	height: 40px;
+	color: white;
+	font-weight: bold;
+	font-size: large;
+	background-color: rgb(28, 66, 189);
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btn:hover {
+	background-color: rgb(24, 55, 158);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.btn:disabled {
+	background-color: rgb(143, 27, 27);
 }
 
-.App-link {
-  color: #61dafb;
+.container {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #282c34;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form {
+	display: flex;
+	flex-direction: column;
+}
+
+/* NEW */
+.main {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	background-color: #dfdfdf;
+	box-sizing: border-box;
+}
+
+.main-nav {
+	width: 100%;
+	height: 70px;
+	background-color: #282c34;
+	display: flex;
+	justify-content: space-around;
+	box-sizing: border-box;
+	padding: 0 10px;
+}
+
+.main-content {
+	height: calc(100vh - 50px);
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+}
+
+.content {
+	flex-wrap: 1;
+	flex: 1;
+}
+
+.aside {
+	flex-wrap: 1;
+}
+
+.link {
+	color: white;
+	font-weight: bold;
+	font-size: large;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.link:hover {
+	color: #4d5361;
+}
+
+.side-nav {
+	width: 100%;
+	height: 100%;
+	background-color: #2551b8;
+	display: flex;
+	flex-direction: column;
+	/* justify-content: space-around; */
+	box-sizing: border-box;
+	padding: 0 10px;
+}
+.side-nav a {
+	padding: 10px 5px;
+}
+
+.icon {
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
 }

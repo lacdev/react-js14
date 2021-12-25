@@ -1,49 +1,53 @@
-import React, { useState } from "react";
-
-// CSS
-import "./UsersNew.css";
+import React, { useState, useEffect } from "react";
 
 // Input
 import Input from "../../components/Input";
 
 // Services
-import { createUser } from "../../services/users";
+import { getUser, updateUser } from "../../services/users";
 
-export default function UsersNew() {
+// RR
+import { useParams } from "react-router-dom";
+
+function UsersUpdate() {
 	const [firstName, setFirstName] = useState("");
 	const [lastName, setLastName] = useState("");
 	const [gender, setGender] = useState("");
 	const [occupation, setOccupation] = useState("");
 	const [birthdate, setBirthdate] = useState("");
 
-	const cleanForm = () => {
-		setFirstName("");
-		setLastName("");
-		setGender("");
-		setOccupation("");
-		setBirthdate("");
-	};
+	const params = useParams();
+
+	useEffect(() => {
+		const get = async () => {
+			const { firstName, lastName, gender, occupation, birthdate } =
+				await getUser(params.userID);
+			// console.log(response);
+			setFirstName(firstName);
+			setLastName(lastName);
+			setGender(gender);
+			setOccupation(occupation);
+			setBirthdate(birthdate);
+		};
+		get();
+	}, [params.userID]);
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
-		try {
-			const data = {
-				firstName,
-				lastName,
-				gender,
-				occupation,
-				birthdate,
-			};
-			await createUser(data);
-			cleanForm();
-		} catch (error) {
-			console.error(error.message);
-		}
+		const data = {
+			firstName,
+			lastName,
+			gender,
+			occupation,
+			birthdate,
+		};
+		await updateUser(params.userID, data);
+		console.log("holi");
 	};
 
 	return (
 		<div className="">
-			<h1>Crea un usuario</h1>
+			<h1>Actualizar usuario </h1>
 			<form onSubmit={handleSubmit}>
 				<Input
 					id="firstName"
@@ -71,8 +75,10 @@ export default function UsersNew() {
 					value={birthdate}
 					setValue={setBirthdate}
 				/>
-				<button type="submit">Crear</button>
+				<button type="submit">Actualizar</button>
 			</form>
 		</div>
 	);
 }
+
+export default UsersUpdate;
